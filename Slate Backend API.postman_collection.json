@@ -1,0 +1,309 @@
+{
+	"info": {
+		"_postman_id": "0d61109e-1c2c-4d59-abc4-7a10eb0bdb18",
+		"name": "Slate Backend API",
+		"description": "# This is the collection for the API testing for the slate assignment make sure you have started the django server on your local system :)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34037528"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"ABC School\",\n  \"email\": \"student1@example.com\",\n  \"password\": \"securepassword123\",\n  \"role\": \"STUDENT\",\n  \"linked_student_id\": 101\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/auth/register/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"register",
+						""
+					]
+				},
+				"description": "## 1. **Register User**\n\n- **Method**: `POST`\n    \n- **URL**: `http://localhost:8000/auth/register/`\n    \n- **Headers**:\n    \n    - `Content-Type: application/json`\n        \n- **Request Body**:\n    \n\n{  \n\"name\": \"ABC School\",  \n\"email\": \"[school@example.com](https://mailto:school@example.com)\",  \n\"password\": \"securepassword123\",  \n\"role\": \"SCHOOL\",  \n\"linked_student_id\": 101  \n}  \n**Success Response**:  \n{  \n\"id\": 1,  \n\"name\": \"ABC School\",  \n\"email\": \"[school@example.com](https://mailto:school@example.com)\",  \n\"role\": \"SCHOOL\",  \n\"linked_student_id\": null  \n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"email\": \"student1@example.com\",\n\"password\": \"securepassword123\",\n\"role\": \"STUDENT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/auth/login/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"login",
+						""
+					]
+				},
+				"description": "StartFragment\n\n## 2\\. **Login User**\n\n- **Method**: `POST`\n    \n- **URL**: `http://localhost:8000/auth/login/`\n    \n- **Headers**:\n    \n    - `Content-Type: application/json`\n        \n- **Request Body**:\n    \n\n{  \n\"email\": \"[parent@slateiitm.me](https://mailto:parent@slateiitm.me)\",  \n\"password\": \"securepassword123\",  \n\"role\": \"PARENT\"  \n}\n\n**Success Response**:\n\n{  \n\"token\": \"\",  \n\"user_id\": user_id generated,  \n\"email\": \"[parent@slateiitm.me](https://mailto:parent@slateiitm.me)\",  \n\"role\": \"PARENT\",  \n\"dashboard\": \"/parent_dashboard\"  \n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Forgot Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"student@example.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/auth/forgot-password/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"forgot-password",
+						""
+					]
+				},
+				"description": "StartFragment\n\n- **Method**: `POST`\n    \n- **URL**: `http://localhost:8000/auth/forgot-password/`\n    \n- **Headers**:\n    \n    - `Content-Type: application/json`\n        \n- **Request Body**:\n    \n\n{  \n\"email\": \"[student@example.com](https://mailto:student@example.com)\"  \n}  \n{  \n\"message\": \"Password reset. Check your email for the new password.\",  \n\"new password\" : generated random password  \n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Add new Student Achievement",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJzY2hvb2xAZXhhbXBsZS5jb20iLCJyb2xlIjoiU0NIT09MIiwiZXhwIjoxNzM4NDIwNTUyfQ.JBGRDYXY3TSHDDADIcp6uQu7ejwfdrFNqG3SuIrxybc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"student_id\": 101,\n    \"name\": \"john\",\n    \"school_name\": \"ABC school\",\n    \"achievement\": \"won chess competition\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/student/achievements/add/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"student",
+						"achievements",
+						"add",
+						""
+					]
+				},
+				"description": "StartFragment\n\n- **Method**: `POST`\n    \n- **URL**: `http://localhost:8000/auth/forgot-password/`\n    \n- **Headers**:\n    \n    - `Content-Type: application/json`\n        \n- **Request Body**:\n    \n\n{  \n\"email\": \"[student@example.com](https://mailto:student@example.com)\"  \n}  \n{  \n\"message\": \"Password reset. Check your email for the new password.\",  \n\"new password\" : generated random password  \n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Student Achievements",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJzY2hvb2xAZXhhbXBsZS5jb20iLCJyb2xlIjoiU0NIT09MIiwiZXhwIjoxNzM4NDA3NjkyfQ.i91PDlBgRqqZxdXf96JT-1_sqAi_1LNVM0_C5AuIEuQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer your_jwt_token_here",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8000/student/achievements/101/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"student",
+						"achievements",
+						"101",
+						""
+					]
+				},
+				"description": "StartFragment\n\n## 4. **Get Student Achievements**\n\n- **Method**: `GET`\n    \n- **URL**: `http://localhost:8000/student/achievements/101/`\n    \n- **Headers**:\n    \n    - `Authorization: Bearer`\n        \n    - `Content-Type: application/json`\n        \n- json:  \n    {  \n    \"student_id\": 101,  \n    \"name\": \"Riya Sharma\",  \n    \"school_name\": \"ABC School\",  \n    \"achievements\": \"Science Olympiad Winner\"  \n    }"
+			},
+			"response": []
+		},
+		{
+			"name": "Parent-Dashboard",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzdHVkZW50MUBleGFtcGxlLmNvbSIsInJvbGUiOiJTVFVERU5UIiwiZXhwIjoxNzM4NDg4Mzg4fQ.DL0nqYP2u-0E38OxRVFVvtHbonJqN3sNHlfOlqBUscU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/parent-dashboard/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"parent-dashboard",
+						""
+					]
+				},
+				"description": "Make a request with the to this url and response will be TRUE or FALSE based on the user is permmited or not"
+			},
+			"response": []
+		},
+		{
+			"name": "Student-Dashboard",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzdHVkZW50MUBleGFtcGxlLmNvbSIsInJvbGUiOiJTVFVERU5UIiwiZXhwIjoxNzM4NDg4Mzg4fQ.DL0nqYP2u-0E38OxRVFVvtHbonJqN3sNHlfOlqBUscU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/student-dashboard/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"student-dashboard",
+						""
+					]
+				},
+				"description": "Make a request with the to this url and response will be TRUE or FALSE based on the user is permmited or not"
+			},
+			"response": []
+		},
+		{
+			"name": "School-Dashboard",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzdHVkZW50MUBleGFtcGxlLmNvbSIsInJvbGUiOiJTVFVERU5UIiwiZXhwIjoxNzM4NDg4Mzg4fQ.DL0nqYP2u-0E38OxRVFVvtHbonJqN3sNHlfOlqBUscU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/school-dashboard/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"school-dashboard",
+						""
+					]
+				},
+				"description": "Make a request with the to this url and response will be TRUE or FALSE based on the user is permmited or not"
+			},
+			"response": []
+		}
+	]
+}
