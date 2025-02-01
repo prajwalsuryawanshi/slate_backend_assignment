@@ -17,8 +17,8 @@ Slate Backend API is a Django-based application that provides a role-based authe
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/slate-backend-api.git
-   cd slate-backend-api
+   git clone https://github.com/your-username/slate_backend_assignment.git
+   cd slate_backend_assignment
    ```
 
 2. Create a virtual environment and activate it:
